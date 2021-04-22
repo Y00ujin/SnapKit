@@ -33,6 +33,16 @@ class ViewController: UIViewController {
         view.backgroundColor = .blue
         return view
     }()
+    
+    lazy var myButton = { (color: UIColor) -> UIButton in
+        let btn = UIButton(type: .system)
+        btn.backgroundColor = .darkGray
+        btn.setTitle("constraint change", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.layer.cornerRadius = 16
+        return btn
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +51,9 @@ class ViewController: UIViewController {
         self.view.addSubview(redView)
         self.view.addSubview(greenView)
         self.view.addSubview(blueView)
+        
+        let myDartGrayBtn = myButton(.darkGray)
+        self.view.addSubview(myDartGrayBtn)
         
 //        greenView.translatesAutoresizingMaskIntoConstraints = false
 //        redView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +76,7 @@ class ViewController: UIViewController {
         // edges를 self.view와 똑같이 만들어라
         // inset = padding
         
+        // snapKit code
         yellowView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
             
@@ -88,7 +102,34 @@ class ViewController: UIViewController {
 //            redView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
 //            redView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
 //        ])
+        
+        // snapKit code
+        blueView.snp.makeConstraints { (make) in
+//            make.width.equalTo(redView.snp.width).dividedBy(2) // 2/1배 줄이기
+            make.width.equalTo(redView.snp.width).multipliedBy(2) // 2배 늘이기
+            make.height.equalTo(redView.snp.height)
+            // blueView의 top을 redView의 bottom에 위치시킨다.
+            // offset = padding 20
+            make.top.equalTo(redView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview() // X축의 중간에 위치시킨다.
+        }
+        
+        // autolayout code
+//        blueView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            // blueView의 width를 redView의 width와 동일하게 한다. multiplier -> redView width의 2배
+//            blueView.widthAnchor.constraint(equalTo: self.redView.widthAnchor, multiplier: 2),
+//            blueView.heightAnchor.constraint(equalTo: self.redView.heightAnchor),
+//            blueView.topAnchor.constraint(equalTo: self.redView.bottomAnchor, constant: 20),
+//            blueView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//        ])
 
+        myDartGrayBtn.snp.makeConstraints { (make) in
+            make.width.equalTo(200)
+            make.height.equalTo(100)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
+            make.centerX.equalToSuperview()
+        }
     }
 }
 
