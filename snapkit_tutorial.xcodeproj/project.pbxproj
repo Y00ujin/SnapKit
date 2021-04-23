@@ -15,6 +15,7 @@
 		6ADD80B82631B50500E0649B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD80B72631B50500E0649B /* Assets.xcassets */; };
 		6ADD80BB2631B50500E0649B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ADD80B92631B50500E0649B /* LaunchScreen.storyboard */; };
 		6ADD80C52631BA2F00E0649B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6ADD80C42631BA2F00E0649B /* SnapKit */; };
+		6ADD80C8263288E900E0649B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD80C7263288E900E0649B /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		6ADD80B72631B50500E0649B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ADD80BA2631B50500E0649B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ADD80BC2631B50500E0649B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ADD80C7263288E900E0649B /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				6ADD80B92631B50500E0649B /* LaunchScreen.storyboard */,
 				6ADD80BC2631B50500E0649B /* Info.plist */,
 				6ADD80B42631B50400E0649B /* snapkit_tutorial.xcdatamodeld */,
+				6ADD80C7263288E900E0649B /* ViewController2.swift */,
 			);
 			path = snapkit_tutorial;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ADD80C8263288E900E0649B /* ViewController2.swift in Sources */,
 				6ADD80B02631B50400E0649B /* ViewController.swift in Sources */,
 				6ADD80AC2631B50400E0649B /* AppDelegate.swift in Sources */,
 				6ADD80B62631B50400E0649B /* snapkit_tutorial.xcdatamodeld in Sources */,

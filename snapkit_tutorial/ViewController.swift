@@ -43,6 +43,10 @@ class ViewController: UIViewController {
         btn.layer.cornerRadius = 16
         return btn
     }
+    
+    lazy var greenViewTopNSlayoutConstraint: NSLayoutConstraint? = nil
+    
+    lazy var greenViewTopConstraint: Constraint? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,14 +128,65 @@ class ViewController: UIViewController {
 //            blueView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
 //        ])
 
+        // snapKit code
         myDartGrayBtn.snp.makeConstraints { (make) in
             make.width.equalTo(200)
             make.height.equalTo(100)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(30)
             make.centerX.equalToSuperview()
         }
+        
+        myDartGrayBtn.addTarget(self, action: #selector(movegreenViewDown), for: .touchUpInside)
+        
+        // autolayout code
+//        myDartGrayBtn.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            // blueView의 width를 redView의 width와 동일하게 한다. multiplier -> redView width의 2배
+//            myDartGrayBtn.widthAnchor.constraint(equalToConstant: 200),
+//            myDartGrayBtn.heightAnchor.constraint(equalToConstant: 100),
+//            myDartGrayBtn.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+//            myDartGrayBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//        ])
+        
+        // snapKit code
+        greenView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(100)
+            make.centerX.equalToSuperview()
+            self.greenViewTopConstraint = make.top.equalTo(blueView.snp.bottom).offset(20).constraint
+        }
+        
+//        greenView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        greenViewTopNSlayoutConstraint = greenView.topAnchor.constraint(equalTo: blueView.bottomAnchor, constant: 20)
+//
+//        // autolayout code
+//
+//        NSLayoutConstraint.activate([
+//            greenView.widthAnchor.constraint(equalToConstant: 100),
+//            greenView.heightAnchor.constraint(equalToConstant: 100),
+//            greenView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//             // constant = margin
+//        ])
+//        greenViewTopNSlayoutConstraint?.isActive = true
+    }
+    
+    var offset = 0
+    
+    @objc fileprivate func movegreenViewDown(){
+        offset += 40
+        print("ViewController - movegreenViewDown() called")
+        print("offset - \(offset)")
+        
+        self.greenViewTopConstraint?.update(inset: offset)
+        
+//        self.greenViewTopNSlayoutConstraint?.constant = CGFloat(offset)
     }
 }
+
+
+
+
+
 
 #if DEBUG
 import SwiftUI
